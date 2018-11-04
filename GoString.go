@@ -19,10 +19,10 @@ type Lang struct {
 type Setting struct {
 	// LangPath: 目標語言 JSON 檔案統一的存放位置 (尾端請加上 /！)
 	LangPath string
-	// Original: 來源語言 JSON 檔案的檔案名稱 (無後 .gloc 副檔名！)
+	// Original: 來源語言 JSON 檔案的檔案名稱 (無後 .json 副檔名！)
 	Original string
-	// LangID:   目標語言 JSON 檔案的檔案名稱 (無後 .gloc 副檔名！)
-	LangID string
+	// TranLang: 目標語言 JSON 檔案的檔案名稱 (無後 .json 副檔名！)
+	TranLang string
 }
 
 // errh 是個處理 Error 的快速捷徑。
@@ -33,7 +33,7 @@ func errh(err error) {
 }
 
 // InitLang 是個初始化語言資料的工具。
-// 使用方法請參閱 doc/usage.md。
+// 使用方法請參閱 README.md。
 //
 // setting:  語言設定檔的檔案位址
 // 回傳： Lang 建構體
@@ -53,9 +53,9 @@ func InitLang(setting string) *Lang {
 	errh(err)
 
 	// 開始解析設定檔
-	origRaw, err = ioutil.ReadFile(set.LangPath + set.Original + ".gloc")
+	origRaw, err = ioutil.ReadFile(set.LangPath + set.Original + ".json")
 	errh(err)
-	tranRaw, err = ioutil.ReadFile(set.LangPath + set.LangID + ".gloc")
+	tranRaw, err = ioutil.ReadFile(set.LangPath + set.TranLang + ".json")
 	errh(err)
 	err = json.Unmarshal(origRaw, &original)
 	errh(err)
@@ -78,7 +78,7 @@ func (l Lang) Str(stri string) string {
   } else if value, ok := l.Original[stri]; ok {
     return value
   } else {
-    os.Stderr.WriteString(fmt.Sprintf("開發者注意：請在來源語言檔案中添加「%s」字串，否則該字串將無法被翻譯！\n", stri))
+    os.Stderr.WriteString(fmt.Sprintf(warning, stri))
     return stri
   }
 }
