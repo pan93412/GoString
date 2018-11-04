@@ -5,4 +5,4 @@ package GoString
 //
 // English:
 // "WARNING for developers: Please add “%s” string into source language file, or the string will not be translatable!"
-warning = "開發者注意：請在來源語言檔案中添加「%s」字串，否則該字串將無法被翻譯！\n"
+var warning = "開發者注意：請在來源語言檔案中添加「%s」字串，否則該字串將無法被翻譯！\n"

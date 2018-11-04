@@ -4,9 +4,9 @@ package GoString
 
 import (
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
-    "fmt"
-    "os"
+	"os"
 )
 
 // Lang 建構體用來儲存語言資料。
@@ -73,12 +73,12 @@ func InitLang(setting string) *Lang {
 // 如果來源語言亦沒有，則直接回傳 stri 的值並在
 // Stderr 頻道發出 "語言字串不存在" 訊息
 func (l Lang) Str(stri string) string {
-  if value, ok := l.L10N[stri]; ok {
-    return value
-  } else if value, ok := l.Original[stri]; ok {
-    return value
-  } else {
-    os.Stderr.WriteString(fmt.Sprintf(warning, stri))
-    return stri
-  }
+	if value, ok := l.L10N[stri]; ok {
+		return value
+	} else if value, ok := l.Original[stri]; ok {
+		return value
+	} else {
+		os.Stderr.WriteString(fmt.Sprintf(warning, stri))
+		return stri
+	}
 }
