@@ -11,5 +11,8 @@
 ## 相關工具
 - [JSON 語言檔案合併工具](https://github.com/pan93412/json-langfile-merge-tool)
 
+## 其他程式語言的國際化工具
+- [Python](https://github.com/pan93412/python-i18n-json)
+
 ## 作者
 - [pan93412](http://www.github.com/pan93412), 2018.
