@@ -1,6 +1,6 @@
 # GoString - 如何使用 GoString 工具？
 ## 載入模組
-```
+``` go
 import (
   gstr GoString
 )
@@ -12,7 +12,7 @@ import (
 ## 初始化語言檔案
 gstr 是沿用自《載入模組》設定的模組別名。
 
-```
+```go
 lh = gstr.InitLang("設定檔案")
 ```
 
@@ -22,7 +22,7 @@ lh = gstr.InitLang("設定檔案")
 ## 本地化字串
 lh 沿用自《初始化語言檔案》設定的變數。
 
-```
+```go
 lh.Str("來源字串")
 ```
 
