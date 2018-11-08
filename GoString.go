@@ -11,7 +11,7 @@ import (
 
 // Lang 建構體用來儲存語言資料。
 type Lang struct {
-	Original map[string]string // JSON 來源語言資料
+	Orig map[string]string // JSON 來源語言資料
 	L10N     map[string]string // JSON 目標語言資料
 }
 
@@ -53,16 +53,16 @@ func InitLang(setting string) *Lang {
 	errh(err)
 
 	// 開始解析設定檔
-	origRaw, err = ioutil.ReadFile(set.LangPath + set.Original + ".json")
+	origRaw, err = ioutil.ReadFile(set.Path + set.Orig + ".json")
 	errh(err)
-	tranRaw, err = ioutil.ReadFile(set.LangPath + set.TranLang + ".json")
+	tranRaw, err = ioutil.ReadFile(set.Path + set.Tran + ".json")
 	errh(err)
 	err = json.Unmarshal(origRaw, &original)
 	errh(err)
 	err = json.Unmarshal(tranRaw, &trans)
 	errh(err)
 
-	lang.Original = original
+	lang.Orig = original
 	lang.L10N = trans
 
 	return lang
@@ -75,7 +75,7 @@ func InitLang(setting string) *Lang {
 func (l Lang) Str(stri string) string {
 	if value, ok := l.L10N[stri]; ok {
 		return value
-	} else if value, ok := l.Original[stri]; ok {
+	} else if value, ok := l.Orig[stri]; ok {
 		return value
 	} else {
 		os.Stderr.WriteString(fmt.Sprintf(warning, stri))
