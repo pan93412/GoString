@@ -17,12 +17,12 @@ type Lang struct {
 
 // Setting 是 setting.json 資料的架構。
 type Setting struct {
-	// LangPath: 目標語言 JSON 檔案統一的存放位置 (尾端請加上 /！)
-	LangPath string
-	// Original: 來源語言 JSON 檔案的檔案名稱 (無後 .json 副檔名！)
-	Original string
-	// TranLang: 目標語言 JSON 檔案的檔案名稱 (無後 .json 副檔名！)
-	TranLang string
+	// Path: 目標語言 JSON 檔案統一的存放位置 (尾端請加上 /！)
+	Path string
+	// Orig: 來源語言 JSON 檔案的檔案名稱 (無後 .json 副檔名！)
+	Orig string
+	// Tran: 目標語言 JSON 檔案的檔案名稱 (無後 .json 副檔名！)
+	Tran string
 }
 
 // errh 是個處理 Error 的快速捷徑。
